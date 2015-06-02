@@ -1,7 +1,11 @@
 package simplebst
 
 type node struct {
+<<<<<<< HEAD
 	key   int
+=======
+	key   int32
+>>>>>>> tmp
 	left  *node
 	right *node
 }
@@ -9,8 +13,17 @@ type Tree struct {
 	root *node
 }
 
+<<<<<<< HEAD
 func (tree *Tree) Search(key int) bool {
 	var target = tree.root
+=======
+func (tr *Tree) IsEmpty() bool {
+	return tr.root == nil
+}
+
+func (tr *Tree) Search(key int32) bool {
+	var target = tr.root
+>>>>>>> tmp
 	for target != nil {
 		if key == target.key {
 			return true
@@ -24,7 +37,11 @@ func (tree *Tree) Search(key int) bool {
 	return false
 }
 
+<<<<<<< HEAD
 func newNode(key int) (unit *node) {
+=======
+func newNode(key int32) (unit *node) {
+>>>>>>> tmp
 	unit = new(node)
 	unit.key = key
 	unit.left, unit.right = nil, nil
@@ -32,6 +49,7 @@ func newNode(key int) (unit *node) {
 }
 
 //成功返回true，冲突返回false
+<<<<<<< HEAD
 func (tree *Tree) Insert(key int) bool {
 	if tree.root == nil {
 		tree.root = newNode(key)
@@ -39,6 +57,15 @@ func (tree *Tree) Insert(key int) bool {
 	}
 
 	var parrent = tree.root
+=======
+func (tr *Tree) Insert(key int32) bool {
+	if tr.root == nil {
+		tr.root = newNode(key)
+		return true
+	}
+
+	var parrent = tr.root
+>>>>>>> tmp
 	for {
 		if key == parrent.key {
 			return false
@@ -61,8 +88,13 @@ func (tree *Tree) Insert(key int) bool {
 }
 
 //成功返回true，没有返回false
+<<<<<<< HEAD
 func (tree *Tree) Remove(key int) bool {
 	var target, parrent, lf = tree.root, (*node)(nil), false
+=======
+func (tr *Tree) Remove(key int32) bool {
+	var target, parrent, lf = tr.root, (*node)(nil), false
+>>>>>>> tmp
 	for target != nil && key != target.key {
 		if key < target.key {
 			target, parrent, lf = target.left, target, true
@@ -88,7 +120,11 @@ func (tree *Tree) Remove(key int) bool {
 	}
 
 	if parrent == nil { //此时victim==target
+<<<<<<< HEAD
 		tree.root = orphan
+=======
+		tr.root = orphan
+>>>>>>> tmp
 	} else {
 		if lf {
 			parrent.left = orphan

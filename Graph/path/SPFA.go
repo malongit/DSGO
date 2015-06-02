@@ -5,6 +5,7 @@ type Path struct {
 	Dist int
 }
 
+<<<<<<< HEAD
 const MaxSignedDist = int((^uint(0)) >> 1)
 
 //输入邻接表，返回某点到各点的最短路径的长度及标记是否可达。
@@ -14,13 +15,27 @@ func SPFA(roads [][]Path, start int) (dists []int, reachable []bool) {
 	var size = len(roads)
 	if size == 0 || start < 0 || start >= size {
 		return []int{}, []bool{}
+=======
+const MAX_DIST = int((^uint(0)) >> 1)
+
+//输入邻接表，返回某点到各点的最短路径的长度(MAX_DIST指不通)。
+//实为改良的Bellman-Ford算法，复杂度为O(EV)，逊于Dijkstra，但可以处理负权边。
+func SPFA(roads [][]Path, start int) (dists []int, fail bool) {
+	var size = len(roads)
+	if size == 0 || start < 0 || start >= size {
+		return []int{}, true
+>>>>>>> tmp
 	}
 
 	var ready = make([]bool, size)
 	dists = make([]int, size)
 	var cnts = make([]int, size)
 	for i := 0; i < size; i++ {
+<<<<<<< HEAD
 		ready[i], dists[i], cnts[i] = true, MaxSignedDist, 0
+=======
+		ready[i], dists[i], cnts[i] = true, MAX_DIST, 0
+>>>>>>> tmp
 	}
 	var space = make([]int, size)
 	var rpt, wpt = 0, 0
@@ -40,12 +55,17 @@ func SPFA(roads [][]Path, start int) (dists []int, reachable []bool) {
 					space[wpt], wpt = peer, (wpt+1)%size
 					cnts[peer]++
 					if cnts[peer] > size { //负回路
+<<<<<<< HEAD
 						return []int{}, []bool{}
+=======
+						return []int{}, true
+>>>>>>> tmp
 					}
 				}
 			}
 		}
 	}
+<<<<<<< HEAD
 	for i := 0; i < size; i++ {
 		if dists[i] != MaxSignedDist {
 			ready[i] = true
@@ -54,4 +74,7 @@ func SPFA(roads [][]Path, start int) (dists []int, reachable []bool) {
 		}
 	}
 	return dists, ready
+=======
+	return dists, false
+>>>>>>> tmp
 }

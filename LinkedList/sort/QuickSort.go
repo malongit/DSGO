@@ -5,6 +5,10 @@ import (
 )
 
 //快速排序，平均复杂度为O(NlogN) & O(logN)，最坏情况是O(N^2) & O(N)，不具有稳定性。
+<<<<<<< HEAD
+=======
+//这里采用递归实现，但实际上QuickSort不适合递归实现(有爆栈风险)。
+>>>>>>> tmp
 func QuickSort(head *list.Node) *list.Node {
 	if head != nil {
 		head, _ = doQuickSort(head)
@@ -23,7 +27,11 @@ func doQuickSort(head *list.Node) (first *list.Node, last *list.Node) {
 		}
 		return head, node
 	}
+<<<<<<< HEAD
 	var left, center, right, _ = part(head, node, node.Next)
+=======
+	var left, center, right, _ = partition(head, node, node.Next)
+>>>>>>> tmp
 
 	first, node = doQuickSort(left)
 	node.Next = center
@@ -31,7 +39,11 @@ func doQuickSort(head *list.Node) (first *list.Node, last *list.Node) {
 	return first, last
 }
 
+<<<<<<< HEAD
 func part(node0 *list.Node, node1 *list.Node, node2 *list.Node) (left *list.Node, center *list.Node, right *list.Node, size int) {
+=======
+func partition(node0 *list.Node, node1 *list.Node, node2 *list.Node) (left *list.Node, center *list.Node, right *list.Node, size int) {
+>>>>>>> tmp
 	var tail = node2.Next
 
 	if node0.Val > node1.Val { //a > b

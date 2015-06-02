@@ -68,7 +68,11 @@ func Test_PlainPrim(t *testing.T) {
 
 func Test_Kruskal(t *testing.T) {
 	defer guard_ut(t)
+<<<<<<< HEAD
 	var roads = []graph.PathX{
+=======
+	var roads = []graph.Edge{
+>>>>>>> tmp
 		{0, 1, 8},
 		{0, 3, 4},
 		{0, 6, 11},

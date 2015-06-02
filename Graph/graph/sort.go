@@ -2,6 +2,7 @@ package graph
 
 func Sort(list []Edge) {
 	var size = len(list)
+<<<<<<< HEAD
 	var tasks stack
 	tasks.push(0, size)
 
@@ -24,6 +25,28 @@ func Sort(list []Edge) {
 }
 
 func part(list []Edge) int {
+=======
+	var life uint
+	for life = 12; size != 0; life++ {
+		size /= 2
+	}
+	doIntroSort(list, life)
+}
+func doIntroSort(list []Edge, life uint) {
+	var size = len(list)
+	if size < 7 {
+		insertSort(list)
+	} else if life == 0 {
+		heapSort(list)
+	} else {
+		var knot = partition(list)
+		doIntroSort(list[0:knot], life-1)
+		doIntroSort(list[knot+1:size], life-1)
+	}
+}
+
+func partition(list []Edge) int {
+>>>>>>> tmp
 	var size = len(list)
 
 	var seed = list[0]
@@ -76,7 +99,10 @@ func heapSort(list []Edge) {
 		down(list[:sz], 0)
 	}
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> tmp
 func down(list []Edge, spot int) {
 	var size = len(list)
 	var key = list[spot]
@@ -121,6 +147,7 @@ func insertSort(list []Edge) {
 		list[left] = key
 	}
 }
+<<<<<<< HEAD
 
 type pair struct {
 	start int
@@ -148,3 +175,5 @@ func (this *stack) pop() (start int, end int) {
 	this.core = this.core[:sz]
 	return unit.start, unit.end
 }
+=======
+>>>>>>> tmp

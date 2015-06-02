@@ -43,7 +43,11 @@ func TryByFile(filenme string) {
 }
 func ShowBucketCounts(msg string, data []string, size uint, fn func(str string) uint) {
 	var vec, top = BucketCounts(data, size, fn)
+<<<<<<< HEAD
 	fmt.Printf("%s [max=%d] %v [%d/%d]\n", msg, top, vec, len(data), size)
+=======
+	fmt.Printf("%s [max=%d] %v	[%d/%d]\n", msg, top, vec, len(data), size)
+>>>>>>> tmp
 }
 func BucketCounts(data []string, size uint, fn func(str string) uint) (vec [6]uint, top uint) {
 	var book = make([]uint, size)
@@ -59,6 +63,7 @@ func BucketCounts(data []string, size uint, fn func(str string) uint) (vec [6]ui
 		vec[i] = 0
 	}
 	for _, num := range book {
+<<<<<<< HEAD
 		if num > top {
 			top = num
 		}
@@ -66,6 +71,17 @@ func BucketCounts(data []string, size uint, fn func(str string) uint) (vec [6]ui
 			num = uint(len(vec)) - 1
 		}
 		vec[num]++
+=======
+		if num != 0 {
+			if num > top {
+				top = num
+			}
+			if num > uint(len(vec)) {
+				num = uint(len(vec))
+			}
+			vec[num-1]++
+		}
+>>>>>>> tmp
 	}
 	return vec, top
 }
@@ -94,7 +110,11 @@ func fetchLines(name string) (data []string, err error) {
 
 //此数列借鉴自SGI STL
 var sz_primes = []uint{
+<<<<<<< HEAD
 	53, 97, 193, 389, 769, 1543, 3079, 6151, 12289, 24593, 49157, 98317, 196613,
+=======
+	17, 29, 53, 97, 193, 389, 769, 1543, 3079, 6151, 12289, 24593, 49157, 98317, 196613,
+>>>>>>> tmp
 	393241, 786433, 1572869, 3145739, 6291469, 12582917, 25165843, 50331653, 1610612741}
 
 func bestSize(hint uint) uint {

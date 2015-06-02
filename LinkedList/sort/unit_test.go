@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+<<<<<<< HEAD
 const sz_tiny = 5
 const sz_small = 300
 const sz_big = 10000
@@ -17,6 +18,40 @@ func guard_ut(t *testing.T) {
 	}
 }
 
+=======
+func Test_MergeSort(t *testing.T) {
+	testLinkListSort(t, MergeSort)
+}
+func Test_QuickSort(t *testing.T) {
+	testLinkListSort(t, QuickSort)
+}
+func Test_IntroSort(t *testing.T) {
+	testLinkListSort(t, IntroSort)
+}
+
+func testLinkListSort(t *testing.T, doit func(*list.Node) *list.Node) {
+	defer func() {
+		if err := recover(); err != nil {
+			t.Fail()
+		}
+	}()
+	var head = ramdomLinkList(200)
+	head = doit(head)
+	if !checkLinkList(head, 200) {
+		t.Fail()
+	}
+	head = ramdomLinkList(5)
+	head = doit(head)
+	if !checkLinkList(head, 5) {
+		t.Fail()
+	}
+	head = new(list.Node)
+	head.Next = nil
+	head = doit(head)
+	head = nil
+	head = doit(head)
+}
+>>>>>>> tmp
 func ramdomLinkList(size int) *list.Node {
 	rand.Seed(time.Now().Unix())
 	var head *list.Node
@@ -39,6 +74,7 @@ func checkLinkList(head *list.Node, size int) bool {
 	}
 	return cnt == size
 }
+<<<<<<< HEAD
 func testLinkListSort(t *testing.T, doit func(*list.Node) *list.Node) {
 	defer guard_ut(t)
 	var head = ramdomLinkList(sz_small)
@@ -67,3 +103,5 @@ func Test_QuickSort(t *testing.T) {
 func Test_IntroSort(t *testing.T) {
 	testLinkListSort(t, IntroSort)
 }
+=======
+>>>>>>> tmp

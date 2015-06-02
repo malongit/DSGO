@@ -65,12 +65,46 @@ func Test_SPFA(t *testing.T) {
 	roads[4] = []Path{{1, 6}, {2, 7}}
 
 	var expected = []int{19, 0, 11, 16, 4}
+<<<<<<< HEAD
 	var dists, _ = SPFA(roads, 1)
 	if !isTheSame(dists, expected) {
+=======
+	var dists, fail = SPFA(roads, 1)
+	if fail || !isTheSame(dists, expected) {
+>>>>>>> tmp
 		t.Fail()
 	}
 }
 
+<<<<<<< HEAD
+=======
+func Test_FloydWarshall(t *testing.T) {
+	defer guard_ut(t)
+	var matrix = [][]int{
+		{0, 1, MAX_DIST, 2, MAX_DIST},
+		{MAX_DIST, 0, MAX_DIST, MAX_DIST, 4},
+		{10, MAX_DIST, 0, 5, MAX_DIST},
+		{3, 9, MAX_DIST, 0, 2},
+		{MAX_DIST, 6, 7, MAX_DIST, 0}}
+
+	var expected = [][]int{
+		{0, 1, 11, 2, 4},
+		{19, 0, 11, 16, 4},
+		{8, 9, 0, 5, 7},
+		{3, 4, 9, 0, 2},
+		{15, 6, 7, 12, 0}}
+
+	FloydWarshall(matrix)
+	for i := 0; i < 5; i++ {
+		for j := 0; j < 5; j++ {
+			if matrix[i][j] != expected[i][j] {
+				t.Fail()
+			}
+		}
+	}
+}
+
+>>>>>>> tmp
 func Test_DijkstraPath(t *testing.T) {
 	defer guard_ut(t)
 	var roads = make([][]graph.Path, 5)

@@ -9,9 +9,15 @@ type Node struct {
 	Next *Node
 }
 
+<<<<<<< HEAD
 func FakeHead(this **Node) *Node {
 	var base = uintptr(unsafe.Pointer(this))
 	var off = unsafe.Offsetof((*this).Next)
+=======
+func FakeHead(spt **Node) *Node {
+	var base = uintptr(unsafe.Pointer(spt))
+	var off = unsafe.Offsetof((*spt).Next)
+>>>>>>> tmp
 	return (*Node)(unsafe.Pointer(base - off))
 }
 
@@ -39,8 +45,12 @@ func Reverse(list *Node) *Node {
 	for list != nil {
 		var node = list
 		list = list.Next
+<<<<<<< HEAD
 		node.Next = head
 		head = node
+=======
+		node.Next, head = head, node
+>>>>>>> tmp
 	}
 	return head
 }
